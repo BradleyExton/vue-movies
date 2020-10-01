@@ -1,5 +1,5 @@
 <template>
-  <div class="">Movies List</div>
+  <div class="w-64 h-full m-5 border-l"></div>
 </template>
 
 <script>
