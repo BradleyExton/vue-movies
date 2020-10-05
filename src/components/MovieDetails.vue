@@ -29,6 +29,14 @@
         </p>
         <p class="mt-10 ml-10 pl-1">{{ activeMovie.Plot }}</p>
         <button
+          v-if="movieExistsInList(activeMovie)"
+          @click="$emit('remove-movie', activeMovie)"
+          class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-10 rounded mt-10"
+        >
+          Remove From List
+        </button>
+        <button
+          v-else
           @click="$emit('add-movie')"
           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-10 rounded mt-10"
         >
@@ -50,6 +58,7 @@ export default {
   props: {
     activeMovie: Object,
     displayMovieDetails: Boolean,
+    movieExistsInList: Function,
   },
   components: { ActorsIcon, DateIcon, DirectorIcon, IconBase },
 };

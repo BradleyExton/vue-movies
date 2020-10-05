@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="h-screen flex flex-col bg-gray-200">
     <header
-      class="w-full px-20 h-20 flex flex-none justify-between items-center shadow z-10"
+      class="w-full bg-white px-20 h-20 flex flex-none justify-between items-center shadow z-10"
     >
       <div class="text-3xl font-mono font-bold flex">
         <h3 class="text-pink-600 text-3xl font-mono font-bold">VUE</h3>
@@ -28,9 +28,11 @@
     <MovieDetails
       :activeMovie="activeMovie"
       :displayMovieDetails="displayMovieDetails"
+      :movieExistsInList="movieExistsInList"
       @add-movie="addActiveMovieToList"
+      @remove-movie="removeMovieFromList"
     />
-    <MovieList :movies="movies" />
+    <MovieList :movies="movies" @set-active-movie="setActiveMovie" />
   </div>
 </template>
 
@@ -58,7 +60,7 @@ export default {
           `http://www.omdbapi.com/?i=tt3896198&apikey=f7842b9a&t='${this.searchTitle}'`
         );
         const data = await response.json();
-        this.activeMovie = data;
+        this.setActiveMovie(data);
         this.displayMovieDetails = true;
       } catch (error) {
         this.displayMovieDetails = false;
@@ -67,6 +69,18 @@ export default {
     },
     addActiveMovieToList() {
       this.movies = [...this.movies, this.activeMovie];
+    },
+    removeMovieFromList(movie) {
+      this.movies = this.movies.filter((mov) => mov.imdbID !== movie.imdbID);
+    },
+    setActiveMovie(movie) {
+      this.activeMovie = movie;
+    },
+    movieExistsInList(movie) {
+      const movieInList = this.movies.find(
+        (mov) => mov.imdbID === movie.imdbID
+      );
+      return !!movieInList;
     },
   },
 };
