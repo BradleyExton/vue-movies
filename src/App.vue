@@ -61,7 +61,7 @@ export default {
         );
         const data = await response.json();
         this.setActiveMovie(data);
-        this.displayMovieDetails = true;
+        this.searchTitle = "";
       } catch (error) {
         this.displayMovieDetails = false;
         console.error(error);
@@ -69,11 +69,15 @@ export default {
     },
     addActiveMovieToList() {
       this.movies = [...this.movies, this.activeMovie];
+      this.clearActiveMovie();
     },
     removeMovieFromList(movie) {
       this.movies = this.movies.filter((mov) => mov.imdbID !== movie.imdbID);
+      this.clearActiveMovie();
     },
     setActiveMovie(movie) {
+      console.log(movie);
+      this.displayMovieDetails = true;
       this.activeMovie = movie;
     },
     movieExistsInList(movie) {
@@ -81,6 +85,10 @@ export default {
         (mov) => mov.imdbID === movie.imdbID
       );
       return !!movieInList;
+    },
+    clearActiveMovie() {
+      this.activeMovie = {};
+      this.displayMovieDetails = false;
     },
   },
 };

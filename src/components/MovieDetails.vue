@@ -1,7 +1,7 @@
 <template>
-  <div class="pt-5 pb-16 bg-gray-200 shadow">
+  <div class="pt-5 pb-16 bg-gray-200 min-h-156">
     <div
-      v-show="displayMovieDetails"
+      v-if="displayMovieDetails"
       class="py-8 flex text-gray-700 rounded shadow-2xl p-10 mt-5 bg-white mx-20"
     >
       <img class="shadow" :src="activeMovie.Poster" />
@@ -31,7 +31,7 @@
         <button
           v-if="movieExistsInList(activeMovie)"
           @click="$emit('remove-movie', activeMovie)"
-          class="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-10 rounded mt-10"
+          class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 ml-10 rounded mt-10"
         >
           Remove From List
         </button>
@@ -43,6 +43,12 @@
           Add To List
         </button>
       </div>
+    </div>
+    <div
+      class="flex justify-center items-center h-full text-gray-500 font-mono"
+      v-else
+    >
+      Please search for a movie above....
     </div>
   </div>
 </template>

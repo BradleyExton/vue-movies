@@ -5,7 +5,13 @@ module.exports = {
   },
   purge: [],
   theme: {
-    extend: {},
+    extend: {
+      minHeight: {
+        "156": "39rem",
+        full: "100%",
+        screen: "100vh",
+      },
+    },
   },
   variants: {},
   plugins: [],
