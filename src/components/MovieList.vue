@@ -11,17 +11,21 @@
         @click="$emit('set-active-movie', movie)"
       >
         <p class="font-bold text-center align-middle mb-3">{{ movie.Title }}</p>
-        <img class="w-40" :src="movie.Poster" />
+        <MoviePoster :poster="movie.Poster" :small="true" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import MoviePoster from "../components/MoviePoster";
 export default {
   name: "movie-list",
   props: {
     movies: Array,
+  },
+  components: {
+    MoviePoster,
   },
 };
 </script>

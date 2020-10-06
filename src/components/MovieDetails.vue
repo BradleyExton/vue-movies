@@ -1,6 +1,6 @@
 <template>
   <div
-    class="pb-16 bg-gray-200 min-h-156"
+    class="pb-16 bg-gray-200 min-h-148"
     v-bind:class="{ 'flex justify-center items-center': !activeMovie.Title }"
   >
     <div
@@ -9,7 +9,7 @@
       v-bind:class="{ 'w-64': !activeMovie.Title }"
     >
       <div v-if="!!activeMovie.Title" class="flex">
-        <img class="shadow" :src="activeMovie.Poster" />
+        <Poster :poster="activeMovie.Poster" />
         <div class="ml-10">
           <p class="font-bold text-xl ml-12 mb-3 text-gray-900 font-mono">
             {{ activeMovie.Title }}
@@ -65,6 +65,7 @@ import ActorsIcon from "./icons/ActorsIcon";
 import DateIcon from "./icons/DateIcon";
 import DirectorIcon from "./icons/DirectorIcon";
 import IconBase from "./icons/IconBase";
+import Poster from "./MoviePoster";
 
 export default {
   name: "movie-details",
@@ -73,7 +74,7 @@ export default {
     displayMovieDetails: Boolean,
     movieExistsInList: Function,
   },
-  components: { ActorsIcon, DateIcon, DirectorIcon, IconBase },
+  components: { ActorsIcon, DateIcon, DirectorIcon, IconBase, Poster },
 };
 </script>
 
