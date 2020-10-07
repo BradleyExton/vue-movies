@@ -1,17 +1,24 @@
 <template>
   <div
-    class="pb-16 bg-gray-200 min-h-148"
-    v-bind:class="{ 'flex justify-center items-center': !activeMovie.Title }"
+    class="pb-16 bg-gray-200 flex justify-center max-w-6xl items-center px-10"
+    v-bind:class="{
+      'flex justify-center items-center min-h-148 ': !activeMovie.Title,
+    }"
   >
     <div
       v-if="displayMovieDetails"
-      class="py-8 flex text-gray-700 rounded shadow-2xl p-10 mt-5 bg-white mx-20"
+      class="min-w-full flex text-gray-700 rounded shadow-2xl p-5 mt-5 bg-white flex-grow"
       v-bind:class="{ 'w-64': !activeMovie.Title }"
     >
-      <div v-if="!!activeMovie.Title" class="flex">
-        <Poster :poster="activeMovie.Poster" />
-        <div class="ml-10">
-          <p class="font-bold text-xl ml-12 mb-3 text-gray-900 font-mono">
+      <div
+        v-if="!!activeMovie.Title"
+        class="flex flex-col justify-center lg:flex-row"
+      >
+        <Poster class="m-auto pt-5 lg:p-10" :poster="activeMovie.Poster" />
+        <div class="max-w-2xl m-5 md:m-10">
+          <p
+            class="font-bold text-xl mb-3 text-gray-900 font-mono text-center lg:mt-5"
+          >
             {{ activeMovie.Title }}
           </p>
           <p class="flex items-center mb-5">
@@ -33,26 +40,28 @@
             <span class="ml-3">{{ activeMovie.Year }}</span>
           </p>
           <p class="mt-10 ml-10 pl-1">{{ activeMovie.Plot }}</p>
-          <button
-            v-if="movieExistsInList(activeMovie)"
-            @click="$emit('remove-movie', activeMovie)"
-            class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 ml-10 rounded mt-10"
-          >
-            Remove From List
-          </button>
-          <button
-            v-else
-            @click="$emit('add-movie')"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-10 rounded mt-10"
-          >
-            Add To List
-          </button>
+          <div class="text-center">
+            <button
+              v-if="movieExistsInList(activeMovie)"
+              @click="$emit('remove-movie', activeMovie)"
+              class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-8 md:mt-12 lg:mt-20"
+            >
+              Remove From List
+            </button>
+            <button
+              v-else
+              @click="$emit('add-movie')"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8 md:mt-12 lg:mt-20"
+            >
+              Add To List
+            </button>
+          </div>
         </div>
       </div>
       <div class="text-center w-full" v-else>No Movie was found...</div>
     </div>
     <div
-      class="flex justify-center items-center h-full text-gray-500 font-mono"
+      class="flex justify-center items-center h-full text-gray-500 font-mono text-center"
       v-else
     >
       Please search for a movie above....

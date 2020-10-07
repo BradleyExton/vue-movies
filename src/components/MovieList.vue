@@ -3,9 +3,9 @@
     <h3 class="text-xl text-gray-500 mb-5 font-mono flex justify-center">
       - Movie List -
     </h3>
-    <div class="flex flex-wrap">
+    <div class="flex flex-col items-center sm:flex-row flex-wrap">
       <div
-        class="rounded shadow-2xl bg-white w-56 flex flex-col justify-center items-center pb-5 pt-3 px-3 mr-5 mb-5 cursor-pointer"
+        class="rounded shadow-2xl bg-white w-56 flex flex-col justify-center items-center pb-5 pt-3 px-3 sm:mr-5 mb-5 cursor-pointer"
         v-for="movie in movies"
         :key="movie.imdbID"
         @click="$emit('set-active-movie', movie)"

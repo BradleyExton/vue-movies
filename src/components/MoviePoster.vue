@@ -8,7 +8,7 @@
   <div
     v-else
     class="bg-purple-300 opacity-75 rounded text-gray-600 font-mono flex justify-center items-center"
-    v-bind:class="{ 'w-40 h-56': small, 'w-64 h-full': !small }"
+    v-bind:class="{ 'w-40 h-56': small, ' w-48 h-56': !small }"
   >
     No Poster
   </div>
