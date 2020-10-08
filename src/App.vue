@@ -82,14 +82,15 @@ export default {
     },
     addActiveMovieToList() {
       this.movies = [...this.movies, this.activeMovie];
+      this.storeMovies();
       this.clearActiveMovie();
     },
     removeMovieFromList(movie) {
       this.movies = this.movies.filter((mov) => mov.imdbID !== movie.imdbID);
+      this.storeMovies();
       this.clearActiveMovie();
     },
     setActiveMovie(movie) {
-      console.log(movie);
       this.displayMovieDetails = true;
       this.activeMovie = movie;
     },
@@ -103,6 +104,13 @@ export default {
       this.activeMovie = {};
       this.displayMovieDetails = false;
     },
+    storeMovies() {
+      localStorage.setItem("movies", JSON.stringify(this.movies));
+    },
+  },
+  created() {
+    const moviesJSON = localStorage.getItem("movies");
+    this.movies = moviesJSON === null ? [] : JSON.parse(moviesJSON);
   },
 };
 </script>

@@ -7,7 +7,7 @@
   >
     <div
       v-if="displayMovieDetails"
-      class="min-w-full flex text-gray-700 rounded shadow-2xl p-5 mt-5 bg-white flex-grow"
+      class="min-w-full flex text-gray-700 rounded shadow-2xl p-5 mt-12 bg-white flex-grow"
       v-bind:class="{ 'w-64': !activeMovie.Title }"
     >
       <div
