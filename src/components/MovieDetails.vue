@@ -40,7 +40,7 @@
             <span class="ml-3">{{ activeMovie.Year }}</span>
           </p>
           <p class="mt-10 ml-10 pl-1">{{ activeMovie.Plot }}</p>
-          <div class="text-center">
+          <div class="ml-10">
             <button
               v-if="movieExistsInList(activeMovie)"
               @click="$emit('remove-movie', activeMovie)"
