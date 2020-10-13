@@ -70,7 +70,7 @@ export default {
     async searchForMovie() {
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?i=tt3896198&apikey=f7842b9a&t='${this.searchTitle}'`
+          `https://www.omdbapi.com/?i=tt3896198&apikey=f7842b9a&t='${this.searchTitle}'`
         );
         const data = await response.json();
         this.setActiveMovie(data);
