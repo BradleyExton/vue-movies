@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="h-screen flex flex-col bg-gray-200 items-center">
+  <div id="app" class="flex flex-col bg-gray-200 items-center">
     <header class="w-full bg-white z-10 shadow">
       <div
         class="h-40 max-w-6xl m-auto flex flex-wrap items-center justify-center flex-col md:px-10 md:h-20 md:flex-row md:justify-between"
@@ -74,6 +74,7 @@ export default {
         );
         const data = await response.json();
         this.setActiveMovie(data);
+
         this.searchTitle = "";
       } catch (error) {
         this.displayMovieDetails = false;
@@ -91,8 +92,12 @@ export default {
       this.clearActiveMovie();
     },
     setActiveMovie(movie) {
+      window.scrollTo(0,0)
+      this.displayMovieDetails = false;
+      setTimeout(() => {
       this.displayMovieDetails = true;
       this.activeMovie = movie;
+      }, 250)
     },
     movieExistsInList(movie) {
       const movieInList = this.movies.find(
@@ -101,8 +106,8 @@ export default {
       return !!movieInList;
     },
     clearActiveMovie() {
-      this.activeMovie = {};
       this.displayMovieDetails = false;
+      this.activeMovie = {};
     },
     storeMovies() {
       localStorage.setItem("movies", JSON.stringify(this.movies));

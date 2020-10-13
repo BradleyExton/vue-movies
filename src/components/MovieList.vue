@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-200 w-full">
     <div class="max-w-6xl px-10 pb-10 m-auto">
-      <h3 class="text-xl text-gray-500 mb-10 font-mono flex justify-center">
+      <h3 class="text-xl text-gray-500 mb-16 font-mono flex justify-center">
         - Movie List -
       </h3>
       <div class="flex flex-col items-center sm:flex-row flex-wrap">
