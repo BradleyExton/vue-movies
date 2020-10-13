@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="flex flex-col bg-gray-200 items-center">
+  <div id="app" class="flex flex-col bg-gray-200 items-center min-h-screen">
     <header class="w-full bg-white z-10 shadow">
       <div
         class="h-40 max-w-6xl m-auto flex flex-wrap items-center justify-center flex-col md:px-10 md:h-20 md:flex-row md:justify-between"
